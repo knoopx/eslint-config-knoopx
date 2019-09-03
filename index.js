@@ -58,6 +58,7 @@ module.exports = {
       },
     ],
     "react/forbid-prop-types": "off",
+    "react/jsx-filename-extension": "off",
     "react/no-unescaped-entities": "off",
     "react/react-in-jsx-scope": "off",
     "valid-typeof": "off",
