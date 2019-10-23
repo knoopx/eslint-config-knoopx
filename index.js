@@ -1,7 +1,7 @@
 const fs = require("fs")
 const path = require("path")
 
-if (process.release.sourceUrl.includes("atom.io")) {
+if (process.versions.v8.includes("electron")) {
   process.env.NODE_PATH = path.resolve(__dirname, "node_modules")
   require("module").Module._initPaths()
 }
