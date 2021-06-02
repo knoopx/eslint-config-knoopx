@@ -7,6 +7,7 @@ if (process.versions.v8.includes("electron")) {
 }
 
 module.exports = {
+  parser: "@babel/eslint-parser",
   extends: [
     "eslint-config-airbnb-base",
     "eslint-config-airbnb-base/rules/strict",
