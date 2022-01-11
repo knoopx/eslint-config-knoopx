@@ -1,13 +1,17 @@
 const fs = require("fs")
 const path = require("path")
 
-if (process.versions.v8.includes("electron")) {
-  process.env.NODE_PATH = path.resolve(__dirname, "node_modules")
-  require("module").Module._initPaths()
-}
+process.env.NODE_PATH = path.resolve(__dirname, "node_modules")
+require("module").Module._initPaths()
 
 module.exports = {
   parser: "@babel/eslint-parser",
+  parserOptions: {
+    requireConfigFile: false,
+    babelOptions: {
+      presets: ["@babel/preset-react"],
+    },
+  },
   extends: [
     "eslint-config-airbnb-base",
     "eslint-config-airbnb-base/rules/strict",
@@ -45,6 +49,7 @@ module.exports = {
       },
     ],
     "import/prefer-default-export": "off",
+    "import/extensions": ["error", "never"],
     "new-cap": "off",
     "no-alert": "off",
     "no-invalid-this": "off",
@@ -64,6 +69,7 @@ module.exports = {
         arrowParens: "always",
       },
     ],
+    "react/function-component-definition": "off",
     "react/forbid-prop-types": "off",
     "react/jsx-filename-extension": "off",
     "react/jsx-props-no-spreading": "off",
@@ -73,7 +79,7 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "valid-typeof": "off",
   },
-  plugins: ["import", "prettier", "babel", "react", "jsx-classname"],
+  plugins: ["html", "import", "prettier", "babel", "react", "jsx-classname"],
   settings: {},
 }
 
