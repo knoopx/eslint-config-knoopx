@@ -1,9 +1,3 @@
-const fs = require("fs")
-const path = require("path")
-
-process.env.NODE_PATH = path.resolve(__dirname, "node_modules")
-require("module").Module._initPaths()
-
 module.exports = {
   parser: "@babel/eslint-parser",
   parserOptions: {
@@ -30,14 +24,14 @@ module.exports = {
     "babel/no-invalid-this": "error",
     "babel/no-unused-expressions": "error",
     "babel/valid-typeof": "error",
-    "camelcase": "off",
+    camelcase: "off",
     "class-methods-use-this": "off",
     "func-names": "off",
     "import/no-extraneous-dependencies": "off",
     "import/order": [
       "error",
       {
-        "groups": [
+        groups: [
           "builtin",
           "external",
           "internal",
@@ -81,16 +75,4 @@ module.exports = {
   },
   plugins: ["html", "import", "prettier", "babel", "react", "jsx-classname"],
   settings: {},
-}
-
-const webpackConfig = path.resolve("webpack.config.js")
-
-if (fs.existsSync(webpackConfig)) {
-  Object.assign(module.exports.settings, {
-    "import/resolver": {
-      webpack: {
-        config: webpackConfig,
-      },
-    },
-  })
-}
+};
